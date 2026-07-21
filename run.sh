@@ -8,6 +8,7 @@ echo "ALLOCATED_GPU_COUNT=4"
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader
 python -m pip install --quiet --disable-pip-version-check \
   "transformers==4.53.2" \
+  "accelerate==1.8.1" \
   "huggingface_hub==0.33.2" \
   "sentencepiece==0.2.0"
 python -u -m reproduce.run_campaign
