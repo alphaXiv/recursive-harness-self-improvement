@@ -1,0 +1,8 @@
+{
+  "model_id": "Qwen/Qwen2.5-Coder-14B-Instruct",
+  "seed": 0,
+  "tasks": "all",
+  "max_workers": 4,
+  "temperature": 0.2,
+  "top_p": 0.9
+}
