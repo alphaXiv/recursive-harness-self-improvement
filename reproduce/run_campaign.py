@@ -373,13 +373,13 @@ def run_task(model: LocalModel, task: Task, seed: int) -> dict[str, Any]:
     bootstrap = pairwise(model, task, r0, plain, "H0", "plain")
     history = [bootstrap]
 
-    h1, oh1 = optimize_harness(model, task, h0, r0, e0, history, 1)
+    h1, oh1 = optimize_harness(model, task, h0, r0, e0, [], 1)
     r1, u1 = generate_repo(model, task, h1, "H1")
     e1 = evaluate_repo(task, r1)
     local1 = pairwise(model, task, r1, r0, "H1", "H0")
     history.append(local1)
 
-    h2, oh2 = optimize_harness(model, task, h1, r1, e1, history, 2)
+    h2, oh2 = optimize_harness(model, task, h1, r1, e1, [], 2)
     r2, u2 = generate_repo(model, task, h2, "H2")
     e2 = evaluate_repo(task, r2)
 
