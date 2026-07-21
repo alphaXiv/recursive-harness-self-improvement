@@ -1,3 +1,8 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["marimo==0.23.14"]
+# ///
+
 import marimo
 
 __generated_with = "0.23.14"
@@ -16,8 +21,8 @@ def _(mo):
     mo.md(r"""
     # Recursive Harness Self-Improvement: bounded reproduction
 
-    **Already-produced evidence:** seven Kubernetes campaigns, eight deterministic tasks,
-    56 paired task-run observations, Qwen2.5-Coder-14B-Instruct, and a peak allocation of
+    **Already-produced evidence:** six independent-seed Kubernetes campaigns, eight deterministic tasks,
+    48 paired task-seed observations, Qwen2.5-Coder-14B-Instruct, and a peak allocation of
     16 NVIDIA RTX PRO 6000 Blackwell GPUs. No expensive inference is run by this notebook.
 
     The paper asks whether pairwise feedback can revise a prompt-level multi-agent harness so
@@ -30,10 +35,10 @@ def _(mo):
 @app.cell
 def _():
     evidence = {
-        "H0 initial": {"executable": 0.598809, "fixed": 0.658988, "output_tokens": 2096.857, "peak_context": 1980.036},
-        "H1 revision": {"executable": 0.661309, "fixed": 0.712113, "output_tokens": 2192.911, "peak_context": 2023.393},
-        "H2 revision": {"executable": 0.592262, "fixed": 0.653423, "output_tokens": 2137.839, "peak_context": 1994.518},
-        "Static high effort": {"executable": 0.688690, "fixed": 0.735387, "output_tokens": 3519.750, "peak_context": 3124.768},
+        "H0 initial": {"executable": 0.601389, "fixed": 0.661180, "output_tokens": 2077.854, "peak_context": 1966.813},
+        "H1 revision": {"executable": 0.665278, "fixed": 0.715486, "output_tokens": 2197.625, "peak_context": 2027.000},
+        "H2 revision": {"executable": 0.598611, "fixed": 0.658820, "output_tokens": 2166.979, "peak_context": 1998.979},
+        "Static high effort": {"executable": 0.690972, "fixed": 0.737326, "output_tokens": 3551.583, "peak_context": 3154.104},
     }
     return (evidence,)
 
@@ -84,9 +89,9 @@ def _(mo):
 
     | Comparison | RHI wins | Comparator wins | Ties | Order-consistent |
     |---|---:|---:|---:|---:|
-    | H1 vs H0 | 8 | 4 | 44 | 13/56 |
-    | H2 vs H0 | 9 | 5 | 42 | 15/56 |
-    | H2 vs static | 1 | 12 | 43 | 13/56 |
+    | H1 vs H0 | 6 | 4 | 38 | — |
+    | H2 vs H0 | 7 | 4 | 37 | 12/48 |
+    | H2 vs static | 1 | 10 | 37 | 11/48 |
 
     Most nominal comparisons became ties because forward and reversed judgments disagreed.
     Hidden executable tests are therefore the primary outcome.
@@ -100,7 +105,7 @@ def _(mo):
     ## What changed in the harness?
 
     Natural revisions barely changed the structural counts: H0/H1/H2 averaged
-    **3/3/3 roles**, **7/7/7 contract fields**, and **4/4/4.02 hops**. A mechanism
+    **3/3/3 roles**, **7/7/7 contract fields**, and **4/4/4 hops**. A mechanism
     branch forced H2 to **10.13 contract fields** and **8.5 hops**, but executable
     score fell from **0.7333 to 0.5375** while context grew.
 
@@ -116,10 +121,11 @@ def _(mo):
     mo.md(r"""
     ## Assessment
 
-    - **Early local improvement:** partially aligned; H1−H0 was +0.0625, with a wide interval.
-    - **Two-revision accumulation:** inconclusive/divergent here; H2−H0 was −0.0065.
-    - **Beyond static scaling:** divergent here; H2−static was −0.0964 with a 95% paired
-      bootstrap interval of [−0.1702, −0.0238].
+    - **Early local improvement:** partially aligned; H1−H0 was +0.0639 with a seed-cluster
+      bootstrap 95% interval of [+0.0222, +0.1049].
+    - **Two-revision accumulation:** inconclusive/divergent here; H2−H0 was −0.0028.
+    - **Beyond static scaling:** divergent here; H2−static was −0.0924 with a seed-cluster
+      bootstrap 95% interval of [−0.1208, −0.0625].
     - **Cache efficiency:** not faithfully testable because Transformers exposed no provider-style
       cache read/write counters.
 

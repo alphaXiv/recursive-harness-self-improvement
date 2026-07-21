@@ -1,33 +1,41 @@
 {
   "paperId": "2607.15524",
   "model": "Qwen/Qwen2.5-Coder-14B-Instruct",
-  "primaryRuns": 7,
-  "pairedTaskRunObservations": 56,
+  "primarySeeds": 6,
+  "pairedTaskSeedObservations": 48,
   "conditions": {
-    "H0": {"meanExecutable": 0.598809, "meanFixedScore": 0.658988, "meanInputTokens": 3504.268, "meanOutputTokens": 2096.857, "meanPeakContextTokens": 1980.036},
-    "H1": {"meanExecutable": 0.661309, "meanFixedScore": 0.712113, "meanInputTokens": 3578.500, "meanOutputTokens": 2192.911, "meanPeakContextTokens": 2023.393},
-    "H2": {"meanExecutable": 0.592262, "meanFixedScore": 0.653423, "meanInputTokens": 3538.857, "meanOutputTokens": 2137.839, "meanPeakContextTokens": 1994.518},
-    "staticHighEffort": {"meanExecutable": 0.688690, "meanFixedScore": 0.735387, "meanInputTokens": 6334.893, "meanOutputTokens": 3519.750, "meanPeakContextTokens": 3124.768}
+    "H0": {"meanExecutable": 0.601389, "meanFixedScore": 0.661180, "meanInputTokens": 3483.271, "meanOutputTokens": 2077.854, "meanPeakContextTokens": 1966.813},
+    "H1": {"meanExecutable": 0.665278, "meanFixedScore": 0.715486, "meanInputTokens": 3580.625, "meanOutputTokens": 2197.625, "meanPeakContextTokens": 2027.000},
+    "H2": {"meanExecutable": 0.598611, "meanFixedScore": 0.658820, "meanInputTokens": 3552.479, "meanOutputTokens": 2166.979, "meanPeakContextTokens": 1998.979},
+    "staticHighEffort": {"meanExecutable": 0.690972, "meanFixedScore": 0.737326, "meanInputTokens": 6384.938, "meanOutputTokens": 3551.583, "meanPeakContextTokens": 3154.104}
   },
-  "pairedDeltas": {
-    "H1minusH0": {"mean": 0.062500, "bootstrap95": [-0.028571, 0.154167], "positive": 21, "tie": 19, "negative": 16},
-    "H2minusH0": {"mean": -0.006548, "bootstrap95": [-0.094643, 0.085119], "positive": 15, "tie": 24, "negative": 17},
-    "H2minusStatic": {"mean": -0.096429, "bootstrap95": [-0.170238, -0.023810], "positive": 11, "tie": 19, "negative": 26}
+  "pairedSeedClusterDeltas": {
+    "H1minusH0": {"mean": 0.063889, "bootstrap95": [0.022222, 0.104861], "positive": 18, "tie": 17, "negative": 13},
+    "H2minusH0": {"mean": -0.002777, "bootstrap95": [-0.077777, 0.075000], "positive": 13, "tie": 21, "negative": 14},
+    "H2minusStatic": {"mean": -0.092361, "bootstrap95": [-0.120833, -0.062500], "positive": 9, "tie": 17, "negative": 22}
   },
   "reversedOrderConsensus": {
-    "H1vsH0": {"H1": 8, "H0": 4, "tie": 44, "orderConsistent": 13},
-    "H2vsH0": {"H2": 9, "H0": 5, "tie": 42, "orderConsistent": 15},
-    "H2vsStatic": {"H2": 1, "staticHighEffort": 12, "tie": 43, "orderConsistent": 13}
+    "H1vsH0": {"H1": 6, "H0": 4, "tie": 38},
+    "H2vsH0": {"H2": 7, "H0": 4, "tie": 37, "orderConsistent": 12},
+    "H2vsStatic": {"H2": 1, "staticHighEffort": 10, "tie": 37, "orderConsistent": 11}
   },
   "meanStructure": {
     "H0": {"roles": 3.0, "contractFields": 7.0, "hops": 4.0, "gates": 2.0, "taskLexicalOverlap": 0.125335},
-    "H1": {"roles": 3.0, "contractFields": 7.0, "hops": 4.0, "gates": 2.5, "taskLexicalOverlap": 0.131355},
-    "H2": {"roles": 3.0, "contractFields": 7.0, "hops": 4.017857, "gates": 2.696429, "taskLexicalOverlap": 0.133853},
+    "H1": {"roles": 3.0, "contractFields": 7.0, "hops": 4.0, "gates": 2.5, "taskLexicalOverlap": 0.131528},
+    "H2": {"roles": 3.0, "contractFields": 7.0, "hops": 4.0, "gates": 2.708333, "taskLexicalOverlap": 0.134242},
     "staticHighEffort": {"roles": 5.0, "contractFields": 14.0, "hops": 8.0, "gates": 3.0, "taskLexicalOverlap": 0.154646}
   },
+  "perSeedExecutable": [
+    {"seed": 0, "H0": 0.608333, "H1": 0.637500, "H2": 0.587500, "static": 0.645833},
+    {"seed": 1, "H0": 0.633333, "H1": 0.758333, "H2": 0.550000, "static": 0.650000},
+    {"seed": 2, "H0": 0.566666, "H1": 0.666667, "H2": 0.708333, "static": 0.741667},
+    {"seed": 3, "H0": 0.658333, "H1": 0.658333, "H2": 0.579167, "static": 0.675000},
+    {"seed": 4, "H0": 0.512500, "H1": 0.516667, "H2": 0.637500, "static": 0.775000},
+    {"seed": 5, "H0": 0.629166, "H1": 0.754166, "H2": 0.529167, "static": 0.658333}
+  ],
   "mechanismRuns": {
     "enforcedStructure": {"H0Executable": 0.733333, "H2Executable": 0.537500, "H0Contracts": 7.0, "H2Contracts": 10.125, "H0Hops": 4.0, "H2Hops": 8.5, "wallSeconds": 1078.171},
     "artifactOnlyOptimizer": {"H0Executable": 0.537500, "H2Executable": 0.608333, "staticExecutable": 0.700000, "wallSeconds": 896.708}
   },
-  "compute": {"backend": "kubernetes", "gpuModel": "NVIDIA RTX PRO 6000 Blackwell", "peakGpuCount": 16, "campaignWallHours": 0.89}
+  "compute": {"backend": "kubernetes", "gpuModel": "NVIDIA RTX PRO 6000 Blackwell", "gpuCountPerRun": 4, "peakGpuCount": 16, "campaignWallHours": 0.89}
 }
