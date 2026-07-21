@@ -340,9 +340,12 @@ def optimize_harness(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     usage = Usage()
     system = """You are a principal prompt engineer for autonomous coding agents. Improve only the
-multi-agent harness. Prioritize task-specific structured output contracts and explicit orchestrator-agent
-hops with critique, targeted recall, and repair. Ground every change in the artifact evidence and cumulative
-pairwise history. You are not given the evaluator rubric. Return one JSON harness only. It must contain name,
+multi-agent harness. Every revision MUST change at least one contract field to name task-specific evidence
+that downstream agents can consume, and MUST add or materially change at least one explicit hop for targeted
+recall, retest, or conflict resolution. Copying the current roles, contract fields, and hops is invalid.
+Prioritize structured output contracts and explicit orchestrator-agent hops with critique, targeted recall,
+and repair. Ground every change in a concrete execution failure or cumulative pairwise-history observation;
+preserve working traits. You are not given the evaluator rubric. Return one JSON harness only. It must contain name,
 roles, hops, repair_rounds, and gates. Each role has id, kind (adviser, builder, or reviewer), instruction, and
 contract (a list of fields). Include exactly one builder, at most two advisers, at most two reviewers, at most
 ten hops, and repair_rounds must be 0 or 1."""
