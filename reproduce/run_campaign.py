@@ -350,7 +350,7 @@ ten hops, and repair_rounds must be 0 or 1."""
         f"TASK:\n{task.prompt}\n\nCURRENT HARNESS:\n{harness_text(previous)}\n\n"
         f"CURRENT ARTIFACT EXCERPT:\n{compact_repo(previous_repo, 14000)}\n\n"
         f"EXECUTION EVIDENCE:\n{json.dumps(previous_eval)}\n\n"
-        f"CUMULATIVE PAIRWISE HISTORY:\n{json.dumps(history)}\n\n"
+        "CUMULATIVE PAIRWISE HISTORY:\n[OMITTED BY ARTIFACT-ONLY ABLATION]\n\n"
         f"Produce H{iteration} as a full replacement harness. Preserve working traits and fix evidenced defects."
     )
     raw = model.call(system, user, 2600, usage)
