@@ -409,16 +409,18 @@ def run_task(model: LocalModel, task: Task, seed: int) -> dict[str, Any]:
 
 def worker_main(gpu: int, task_indices: list[int], model_path: str, config: dict[str, Any], queue: Any) -> None:
     seed = int(config["seed"])
-    model = LocalModel(model_path, gpu, config, seed * 100 + gpu)
-    for idx in task_indices:
-        task = TASKS[idx]
-        try:
+    task: Task | None = None
+    try:
+        model = LocalModel(model_path, gpu, config, seed * 100 + gpu)
+        for idx in task_indices:
+            task = TASKS[idx]
             queue.put({"type": "progress", "task": task.id, "state": "started", "gpu": gpu})
             result = run_task(model, task, seed)
             queue.put({"type": "result", "result": result, "gpu": gpu})
-        except Exception as exc:
-            queue.put({"type": "error", "task": task.id, "error": repr(exc), "gpu": gpu})
-    queue.put({"type": "worker_done", "gpu": gpu})
+    except Exception as exc:
+        queue.put({"type": "error", "task": task.id if task else "model_initialization", "error": repr(exc), "gpu": gpu})
+    finally:
+        queue.put({"type": "worker_done", "gpu": gpu})
 
 
 def aggregate(results: list[dict[str, Any]], started: float, config: dict[str, Any]) -> dict[str, Any]:
